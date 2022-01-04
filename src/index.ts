@@ -39,14 +39,14 @@ const todoList: Array<TodoItemInterface> = [
 ]
 
 // 모든 todoList 받아오기
-app.get('//todolistall', (req, res) => {
+app.get('/todolist/all', (req, res) => {
   res.send(todoList)
 })
 
 // 특정 id todoList 받아오기
 
 //
-app.get('//todolistget/:id', (req, res) => {
+app.get('/todolist/get/:id', (req, res) => {
   const todoItem = todoList.find((item) => item.id === parseInt(req.params.id))
   res.send(todoItem)
 })
