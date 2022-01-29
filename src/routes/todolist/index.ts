@@ -1,4 +1,5 @@
 import { Router } from 'express'
+import { dbConnection } from '../../config/database'
 
 const router = Router()
 
@@ -32,7 +33,10 @@ const todoList: Array<TodoItemInterface> = [
 ]
 
 router.get('/all', (req, res) => {
-  res.send(todoList)
+  dbConnection.query('SELECT * FROM USER', (err, result) => {
+    if (err) console.error(err)
+    res.send(result)
+  })
 })
 
 // 특정 id todoList 받아오기
@@ -68,4 +72,4 @@ router.post('/modify/:id', (req, res) => {
   }
 })
 
-module.exports = router
+export { router as TodoListRouter }
