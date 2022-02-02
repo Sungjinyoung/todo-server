@@ -26,7 +26,7 @@ app.use(bodyParser.json())
 
 app.use(cors(corsOptions))
 
-app.use('/todolist', TodoListRouter)
+app.use('/todo', TodoListRouter)
 app.use('/user', UserRouter)
 
 app.listen(8080, () => {
